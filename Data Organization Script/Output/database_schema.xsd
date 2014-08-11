@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <xs:element name="database">
+      <xs:complexType>
+      	<xs:sequence>
+      	<xs:element name="set" maxOccurs="unbounded">
+      		<xs:complexType>
+      			<xs:sequence>
+      				<xs:element name="ip" minOccurs="1">
+      					<xs:simpleType>
+      						<xs:restriction base="xs:string">
+      							<xs:pattern value="(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])\.(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])"/>
+      						</xs:restriction>
+      					</xs:simpleType>
+      				</xs:element>
+      				<xs:element name="asn" type="xs:string" minOccurs="1"/>
+      				<xs:element name="location" type="xs:string" minOccurs="1"/>
+      				<xs:element name="coordinates" type="xs:string" minOccurs="1"/>
+      			</xs:sequence>
+      		</xs:complexType>
+      	</xs:element>
+      	</xs:sequence>
+      </xs:complexType>
+   </xs:element>
+   
+</xs:schema>

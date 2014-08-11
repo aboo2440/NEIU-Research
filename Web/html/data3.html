@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Traceroute Data</title>
+        <style>
+            .outside {
+                padding: 30px 0px 20px 0px;
+                
+            }
+            .outside th {
+                margin-top: 50px;
+                border-top: solid 5px black;
+                border-right: solid 1px black;
+                border-bottom: solid 1px black;
+                padding: 5px 20px 5px 20px;
+            }
+            .outside td.split {
+                border-right: solid 5px black;
+            }
+            .outside th.split {
+                border-right: solid 5px black;
+            }
+            .outside td {
+                padding-left: 20px;
+                padding-right: 10px;
+            }
+            .inner {
+                padding: 10px 0px 30px 100px;
+                border: none;
+            }
+            .inner th {
+                border-bottom: solid 2px black;
+            }
+            .inner td {
+                padding-left: 30px;
+                padding-right: 20px;
+            }
+            div {
+                padding: 10px 50px 10px 50px;
+            }
+			ul {
+				list-style-type: none;
+			}
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <script>
+            if (window.XMLHttpRequest)
+            {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else
+            {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            
+            // Open XML connection.
+			var folder = "../data/";
+			var filename = "updated_datasample_03_(7-27-2014).xml";
+            xmlhttp.open("GET",(folder+filename),false);
+            xmlhttp.send();
+            xmlDoc = xmlhttp.responseXML;
+            
+            // Get a list of all traceroutes tags
+            var x = xmlDoc.getElementsByTagName("traceroutes");
+            
+			document.write("<h1 style='text-align:center'>File: "+filename+"</h1>");
+			document.write("<h2 style='text-align:center'>Source Servers</h2>");
+            // Iterate over all traceroutes servers.
+            for (i=0; i<x.length ;i++)
+            {
+				// List of traceroute tags from current traceroutes (i)
+                var z = x[i].getElementsByTagName("traceroute");
+				
+                // Create table for current traceroutes tag
+                document.write("<div data-role='collapsible'>"
+					+ "<h1>"
+					+ z[0].getElementsByTagName("server")[0].getElementsByTagName("name")[0].innerHTML
+					+ "</h1>"
+					+ "<ul><h4 style='text-align:center'>Content Providers</h4>");
+				
+                // Iterate over all traceroute servers.
+                for (k=0; k< z.length; k++) {
+                    
+					if (z[k].getElementsByTagName("data")[0] != null) {
+						// Create table for current traceroute tag
+						document.write("<li><div data-role='collapsible'>"
+							+ "<h1>"
+							+ z[k].getElementsByTagName("server")[1].getElementsByTagName("name")[0].innerHTML
+							+ "</h1>"
+							+ "<table class='inner'>");
+						
+						// Create Table Headers
+						document.write("<tr>");
+						// Source Headers
+						document.write("<th>Source Name</th>");
+						document.write("<th>Source AS Number</th>");
+						document.write("<th class='split'>Source Location</th>");
+						
+						// Destination Headers
+						document.write("<th>Destination Name</th>");
+						document.write("<th>Destination AS Number</th>");
+						document.write("<th class='split'>Destination Location</th>");
+						
+						// Utility Headers
+						document.write("<th>Date</th>");
+						document.write("<th>Time</th>");
+						
+						document.write("</tr>");
+						
+						// Create Table Data
+						document.write("<tr>");
+						
+						// Source Table Data
+						document.write("<td>"+ z[k].getElementsByTagName("server")[0].getElementsByTagName("name")[0].innerHTML +"</td>");
+						document.write("<td>"+ z[k].getElementsByTagName("server")[0].getElementsByTagName("AS")[0].innerHTML +"</td>");
+						document.write("<td class='split'>"+ z[k].getElementsByTagName("server")[0].getElementsByTagName("location")[0].innerHTML +"</td>");
+						
+						// Destination Table Data
+						document.write("<td>"+ z[k].getElementsByTagName("server")[1].getElementsByTagName("name")[0].innerHTML +"</td>");
+						document.write("<td>"+ z[k].getElementsByTagName("server")[1].getElementsByTagName("AS")[0].innerHTML +"</td>");
+						document.write("<td class='split'>"+ z[k].getElementsByTagName("server")[1].getElementsByTagName("location")[0].innerHTML +"</td>");
+						
+						
+						// Utility Table Data
+						document.write("<td>"+ z[k].getElementsByTagName("time")[0].getElementsByTagName("date")[0].innerHTML +"</td>");
+						document.write("<td>"+ z[k].getElementsByTagName("time")[0].getElementsByTagName("timestamp")[0].innerHTML +"</td>");
+						document.write("</tr></table>");
+						var y = z[k].getElementsByTagName("data").length;
+						document.write("<table class='inner'>"
+									   +"<tr><th>Hop</th>"
+									   +"<th>Domain Name</th>"
+									   +"<th>IPv4 Address</th>"
+									   +"<th>AS Number</th>"
+									   +"<th>Location</th>"
+									   +"</tr>");
+									   
+						for (j = 0; j < y; j++) {
+							// Data Table Data
+							document.write("<tr>");
+							document.write("<td>" + z[k].getElementsByTagName("data")[j].getElementsByTagName("hop")[0].innerHTML + "</td>");
+							document.write("<td>" + z[k].getElementsByTagName("data")[j].getElementsByTagName("domain")[0].innerHTML + "</td>");
+							if (z[k].getElementsByTagName("data")[j].getElementsByTagName("ip")[0])
+								document.write("<td>" + z[k].getElementsByTagName("data")[j].getElementsByTagName("ip")[0].innerHTML + "</td>");
+							if (z[k].getElementsByTagName("data")[j].getElementsByTagName("asn")[0])
+								document.write("<td>" + z[k].getElementsByTagName("data")[j].getElementsByTagName("asn")[0].innerHTML + "</td>");
+							if (z[k].getElementsByTagName("data")[j].getElementsByTagName("location")[0])
+								document.write("<td>" + z[k].getElementsByTagName("data")[j].getElementsByTagName("location")[0].innerHTML + "</td>");
+							document.write("</tr>");
+						}
+						
+						// Close Traceroute Table
+						document.write("</li></table></div>");
+					}
+                }
+				
+				// Close Traceroutes Table
+				document.write("</ul></div>");
+            }
+        </script>
+    </body>
+</html>
