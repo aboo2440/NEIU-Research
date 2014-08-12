@@ -72,81 +72,129 @@ public class DataOrganization {
 			// Description and warranty.
 			System.out.println("\nTraceroute Data Organization\n");
 			
-			System.out.println("Enter the text \"load\" to prompt file loader."
-					+"\nEnter the text \"display\" to display entire database."
-					+"\nEnter the text \"query [IP Address]\" to search the database for an IP address."
-					+"\nEnter the text \"attempts\" to display number of attempts. Max limit is 10,000 daily."
-					+"\nEnter the text \"help\" to display this message again."
-					+"\nEnter the text \"token\" to add a token to the requests."
-					+"\nEnter the text \"exit\" to exit program."
-					+"\nEnter any IP Address to search for its' AS Number, Location, and Coordinates.");
+			System.out.println("\nOptions:"
+					+ "\n\t\"Load [Filename]\" - Load a file from Collection/Output/ folder."
+					+"\n\t\"Display\" - Display entire database."
+					+"\n\t\"Attempts\" - Display number of attempts. Max limit is 10,000 daily."
+					+"\n\t\"Help\" - Display this message again."
+					+"\n\t\"Token Add [token string]\" - Add a token to the requests."
+					+"\n\t\"Token Display\" - Displays the saved token."
+					+"\n\t\"Token Remove\" - Clears the saved token."
+					+"\n\t\"Exit\" - Return to Main Menu."
+					+"\n\t[IPv4 Address] - Entering an IPv4 Address will return the AS Number, Location, and Coordinates of it.");
 			while (true) {
 				System.out.print("\nCommand > ");
 				String response = userIn.nextLine();
-				if (response.equalsIgnoreCase("exit")){
-					System.out.println("Program is returning to main menu.");
-					break;
-				} else if (response.equalsIgnoreCase("help")) {
-					System.out.println("\nEnter the text \"load\" to prompt file loader."
-							+"\nEnter the text \"display\" to display entire database."
-							+"\nEnter the text \"attempts\" to display number of attempts. Max limit is 10,000 daily."
-							+"\nEnter the text \"help\" to display this message again."
-							+"\nEnter the text \"exit\" to exit program."
-							+"\nEnter any IPv4 Address to search for its' AS Number, Location, and Coordinates.");
-				} else if (response.equalsIgnoreCase("display")) {
-					displayDatabase();
-				} else if (response.equalsIgnoreCase("load")) {
-					System.out.print("File must be located inside Collection/Output/ folder."
-							+ "\nEnter \"exit\" to exit file loading."
-							+ "\nEnter the name of the file to load: ");
-					String file = userIn.nextLine();
-					if (file.equalsIgnoreCase("exit"))
+				
+				if (response.equalsIgnoreCase("exit"))
+					// Exit
+					{
+						System.out.println("Program is returning to main menu.");
 						break;
-					File loadFile = new File("Collection/Output/"+file);
-					loadFile(loadFile);
-				} else if (response.equalsIgnoreCase("attempts")) {
-					System.out.println("Attempts: " + getAttempts());
-				} else if (response.equalsIgnoreCase("token")) {
-					System.out.println("(Example Token: ?token=###########)");
-					System.out.print("Enter the token string to add to file: ");
-					token = userIn.nextLine();
-					FileUtils.write(new File("Organization/config/token.txt"), token);
-				}
-				else {
-					if (response.matches(ipPattern)){
-						if (search(response)){
-							// True
-							String [] queryResponse = query(response);
-							if (queryResponse == null) {
-								System.out.println("Error while retreving IP address from database. Try again.");
-							} else {
-								System.out.println("\nAS Number:\t" + queryResponse[0]);
-								System.out.println("Location:\t" + queryResponse[1]);
-								System.out.println("Coordinates:\t" + queryResponse[2]);
-							}
-							
-							System.out.println("\nThat IP address is in the database.");
-						} else {
-							// False - IP isn't in database
-							// Add IP Address to database
-							addToDatabase(response);
-							
-							String [] queryResponse = query(response);
-							if (queryResponse == null) {
-								System.out.println("Error while retreving IP address from database. Try again.");
-							} else {
-								System.out.println("\nAS Number:\t" + queryResponse[0]);
-								System.out.println("Location:\t" + queryResponse[1]);
-								System.out.println("Coordinates:\t" + queryResponse[2]);
-							}
-							
-							System.out.println("\nThat IP address has been added to the database.");
-						}
-					} else {
-						System.out.println("Not a valid IPv4 Addres. Try again.");
+					} 
+				else if (response.equalsIgnoreCase("help")) 
+					// Help
+					{
+						System.out.println("\nOptions:"
+								+ "\n\t\"Load [Filename]\" - Load a file from Collection/Output/ folder."
+								+"\n\t\"Display\" - Display entire database."
+								+"\n\t\"Attempts\" - Display number of attempts. Max limit is 10,000 daily."
+								+"\n\t\"Help\" - Display this message again."
+								+"\n\t\"Token Add [token string]\" - Add a token to the requests."
+								+"\n\t\"Token Display\" - Displays the saved token."
+								+"\n\t\"Token Remove\" - Clears the saved token."
+								+"\n\t\"Exit\" - Return to Main Menu."
+								+"\n\t[IPv4 Address] - Entering an IPv4 Address will return the AS Number, Location, and Coordinates of it.");
+					} 
+				else if (response.equalsIgnoreCase("display")) 
+					// Display
+					{
+						displayDatabase();
+					} 
+				else if (response.equalsIgnoreCase("load")) 
+					// Load
+					{
+						System.out.print("File must be located inside Collection/Output/ folder."
+								+ "\nEnter \"exit\" to exit file loading."
+								+ "\nEnter the name of the file to load: ");
+						String file = userIn.nextLine();
+						if (file.equalsIgnoreCase("exit"))
+							break;
+						File loadFile = new File("Collection/Output/"+file);
+						loadFile(loadFile);
+					} 
+				else if (response.equalsIgnoreCase("attempts")) 
+					// Attempts
+					{
+						System.out.println("Attempts: " + getAttempts());
 					}
-				}
+				else if ((response.length() > 9) && (response.substring(0, 5).equalsIgnoreCase("token") && response.substring(6, 9).equalsIgnoreCase("add"))) 
+					// Token Add [Token]
+					{
+						String tmp = response.substring(10, response.length());
+						
+						// ?token=
+						
+						if ((tmp.length() > 6) && tmp.substring(0, 7).equalsIgnoreCase("?token=")) {
+							token = tmp;
+							FileUtils.write(new File("Organization/config/token.txt"), token);
+						} else {
+							System.out.println("Sorry that was not a valid token. Try again.");
+						}
+					}
+				else if ((response.length() == 13) && (response.substring(0, 5).equalsIgnoreCase("token") && response.substring(6, 13).equalsIgnoreCase("display"))) 
+					// Token Display
+					{
+						String tmpToken = FileUtils.readFileToString(new File("Organization/config/token.txt"));
+						if (tmpToken.equals(""))
+							System.out.println("There is no saved token.");
+						else
+							System.out.println("The Token being used is: " + tmpToken);
+					}
+				else if ((response.length() == 12) && (response.substring(0, 5).equalsIgnoreCase("token") && response.substring(6, 12).equalsIgnoreCase("remove"))) 
+					// Token Remove
+					{
+						token = "";
+						FileUtils.write(new File("Organization/config/token.txt"), token);
+					}
+				else 
+					// IP Search
+					{
+						if (response.matches(ipPattern)){
+							if (search(response)){
+								// True
+								String [] queryResponse = query(response);
+								if (queryResponse == null) {
+									System.out.println("Error while retreving IP address from database. Try again.");
+								} else {
+									System.out.println("\nAS Number:\t" + queryResponse[0]);
+									System.out.println("Location:\t" + queryResponse[1]);
+									System.out.println("Coordinates:\t" + queryResponse[2]);
+								}
+								
+								System.out.println("\nThat IP address is in the database.");
+							} else {
+								// False - IP isn't in database
+								// Add IP Address to database
+								addToDatabase(response);
+								
+								String [] queryResponse = query(response);
+								if (queryResponse == null) {
+									System.out.println("Error while retreving IP address from database. Try again.");
+								} else {
+									System.out.println("\nAS Number:\t" + queryResponse[0]);
+									System.out.println("Location:\t" + queryResponse[1]);
+									System.out.println("Coordinates:\t" + queryResponse[2]);
+								}
+								
+								System.out.println("\nThat IP address has been added to the database.");
+							}
+						} else {
+							System.out.println("Not a valid IPv4 Addres. Try again.");
+						}
+					}
 			} // End of While Loop
+			
 			// Close everything.
 			parser.close();
 			in.close();
@@ -497,7 +545,7 @@ public class DataOrganization {
 		try {
 			token = FileUtils.readFileToString(new File("Organization/config/token.txt"));
 			
-			if (token == "" || token == null) {
+			if (token.length() < 3 || token.equals("") || token == null || !token.substring(0, 7).equalsIgnoreCase("?token=")) {
 				return false;
 			}
 		} catch (IOException e) {
@@ -518,9 +566,10 @@ public class DataOrganization {
 		HttpGet get;
 		
 		if (loadToken())
-			System.out.println("Token is: " + token);
+			System.out.println("Token being used: " + token);
 		else
 			token = "";
+		
 		client = new DefaultHttpClient();
 		get = new HttpGet("http://ipinfo.io/" +(ip + "/json"+token));
 		
@@ -555,7 +604,7 @@ public class DataOrganization {
 					location[2] = locations[6].substring(10, (locations[6].length() - 2));
 					
 					// Get asn
-					if (locations[7].length() > 13)
+					if (locations[7].length() > 13 && !locations[7].substring(10, (locations[7].length() - 2)).contains(": \""))
 						location[0] = locations[7].substring(10, (locations[7].length() - 2));
 				}
 			}

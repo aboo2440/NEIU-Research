@@ -24,11 +24,12 @@ public class Application {
 		while (true) {
 		
 			System.out.print("\nMain Menu"
-				+ "\nAvailable Tools:"
-				+ "\n\tData Collector"
-				+ "\n\tData Organizer"
+				+ "\nAvailable Commands:"
+				+ "\n\t\"Data Collector\" - Tool used to collect traceroute data from public servers."
+				+ "\n\t\"Data Organizer\" - Tool used to clean up data from collection and also add AS Number, Location, and Coordinates of each IP Address."
+				+ "\n\t\"Exit\" - Exit the program."
 				+ "\n\nEnter the tool name you would like to use: "
-				+ "\nCommand > ");
+				+ "\n\nCommand > ");
 			if ( in.hasNext() )
 				response = in.nextLine();
 			

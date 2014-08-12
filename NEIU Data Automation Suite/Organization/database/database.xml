@@ -16423,7 +16423,7 @@
 	</set>
 	<set>
 		<ip>140.222.226.135</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - Purchase</location>
 		<coordinates>41.0387,-73.7173</coordinates>
 	</set>
@@ -17185,7 +17185,7 @@
 	</set>
 	<set>
 		<ip>140.222.227.69</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - Purchase</location>
 		<coordinates>41.0387,-73.7173</coordinates>
 	</set>
@@ -17329,9 +17329,9 @@
 	</set>
 	<set>
 		<ip>10.22.12.206</ip>
-		<asn />
-		<location />
-		<coordinates />
+		<asn/>
+		<location/>
+		<coordinates/>
 	</set>
 	<set>
 		<ip>204.70.198.141</ip>
@@ -18391,7 +18391,7 @@
 	</set>
 	<set>
 		<ip>67.14.28.110</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
@@ -18403,7 +18403,7 @@
 	</set>
 	<set>
 		<ip>67.14.4.206</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
@@ -18901,7 +18901,7 @@
 	</set>
 	<set>
 		<ip>140.222.226.139</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - Purchase</location>
 		<coordinates>41.0387,-73.7173</coordinates>
 	</set>
@@ -19987,13 +19987,13 @@
 	</set>
 	<set>
 		<ip>206.223.119.96</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
 	<set>
 		<ip>140.222.227.129</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - Purchase</location>
 		<coordinates>41.0387,-73.7173</coordinates>
 	</set>
@@ -20263,7 +20263,7 @@
 	</set>
 	<set>
 		<ip>206.223.119.27</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
@@ -20287,7 +20287,7 @@
 	</set>
 	<set>
 		<ip>108.174.14.31</ip>
-		<asn />
+		<asn/>
 		<location>US - California - Mountain View</location>
 		<coordinates>37.4192,-122.0574</coordinates>
 	</set>
@@ -20305,7 +20305,7 @@
 	</set>
 	<set>
 		<ip>216.187.88.208</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - New York</location>
 		<coordinates>40.6888,-74.0203</coordinates>
 	</set>
@@ -20557,7 +20557,7 @@
 	</set>
 	<set>
 		<ip>206.223.119.115</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
@@ -20905,7 +20905,7 @@
 	</set>
 	<set>
 		<ip>67.14.40.54</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
@@ -21769,7 +21769,7 @@
 	</set>
 	<set>
 		<ip>103.16.102.23</ip>
-		<asn />
+		<asn/>
 		<location>SG</location>
 		<coordinates>1.3667,103.800</coordinates>
 	</set>
@@ -21997,7 +21997,7 @@
 	</set>
 	<set>
 		<ip>140.222.227.73</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - Purchase</location>
 		<coordinates>41.0387,-73.7173</coordinates>
 	</set>
@@ -22039,13 +22039,13 @@
 	</set>
 	<set>
 		<ip>206.223.116.19</ip>
-		<asn />
+		<asn/>
 		<location>US</location>
 		<coordinates>38.0000,-97.000</coordinates>
 	</set>
 	<set>
 		<ip>140.222.229.97</ip>
-		<asn />
+		<asn/>
 		<location>US - New York - Purchase</location>
 		<coordinates>41.0387,-73.7173</coordinates>
 	</set>
@@ -22091,4 +22091,4 @@
 		<location>US</location>
 		<coordinates>38.0000,-97.0000</coordinates>
 	</set>
-</database>
+<set><ip>20.20.20.20</ip><asn/><location>US - Virginia - Falls Church</location><coordinates>38.8640,-77.1922</coordinates></set><set><ip>21.20.20.21</ip><asn/><location>US - Ohio - Columbus</location><coordinates>39.9612,-82.9988</coordinates></set><set><ip>20.21.20.21</ip><asn/><location>US - Virginia - Falls Church</location><coordinates>38.8640,-77.1922</coordinates></set><set><ip>25.25.25.25</ip><asn/><location>GB</location><coordinates>51.5000,-0.130</coordinates></set></database>

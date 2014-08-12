@@ -50,8 +50,8 @@ public class DataCollector {
 		// Check verbose
 		System.out.print("Data Collection will take approximately 12 to 16 hours.\nPlease dedicate enough time before starting."
 				+ "\n\nOptions:"
-				+ "\n\tStart - Starts the data collection process."
-				+ "\n\tExit - Returns to main menu."
+				+ "\n\t\"Start\" - Starts the data collection process."
+				+ "\n\t\"Exit\" - Returns to main menu."
 				+ "\n\nCommand > ");
 		String checkStart = in.nextLine();
 		
