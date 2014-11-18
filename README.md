@@ -14,44 +14,44 @@ Summary of files in project:
 
 Configuration format of source.txt and destination.txt
 
-All lines are required and can't be skipped. A missing line may cause an error in the program.
+<b>All lines are required and can't be skipped. A missing line may cause an error in the program.</b><br/>
 
-source.txt
-Line 1:(Name of source server)
-Line 2:(Method of http request, i.e. GET | POST)
-Line 3:(URI of public server)(If using GET, remove the GET query string from this line and add it below)
-Line 4:(GET|POST query string, substitute the location in the string where you input an IP address with #)
-Line 5:(AS number of source server)
-Line 6:(Location, i.e. COUNTRY - STATE - CITY)
+<b>source.txt</b><br/>
+Line 1:(Name of source server)<br/>
+Line 2:(Method of http request, i.e. GET | POST)<br/>
+Line 3:(URI of public server)(If using GET, remove the GET query string from this line and add it below)<br/>
+Line 4:(GET|POST query string, substitute the location in the string where you input an IP address with #)<br/>
+Line 5:(AS number of source server)<br/>
+Line 6:(Location, i.e. COUNTRY - STATE - CITY)<br/>
 
-Example:
-Method GET
-Line 1:ThunderWorx (PrimeTel NOC)
-Line 2:GET
-Line 3:http://noc.thunderworx.net/cgi-bin/public/traceroute.pl
-Line 4:?target=#
-Line 5:AS12033
-Line 6:Cyprus
+Example:<br/>
+Method GET<br/>
+Line 1:ThunderWorx (PrimeTel NOC)<br/>
+Line 2:GET<br/>
+Line 3:http://noc.thunderworx.net/cgi-bin/public/traceroute.pl<br/>
+Line 4:?target=#<br/>
+Line 5:AS12033<br/>
+Line 6:Cyprus<br/>
 
-Method POST
-Line 1:Colocation American Corporation
-Line 2:POST
-Line 3:http://www.colocationamerica.com/traceroute.php
-Line 4:remoteAddress=#
-Line 5:AS21769
-Line 6:USA - Nevada - Las Vegas
+Method POST<br/>
+Line 1:Colocation American Corporation<br/>
+Line 2:POST<br/>
+Line 3:http://www.colocationamerica.com/traceroute.php<br/>
+Line 4:remoteAddress=#<br/>
+Line 5:AS21769<br/>
+Line 6:USA - Nevada - Las Vegas<br/>
 
-destination.txt
-Line 1:(Name of destination server)
-Line 2:(AS number of destination server)
-Line 3:(Location, i.e. COUNTRY - STATE - CITY)
-Line 4:(IP address of destination server)
+<b>destination.txt</b><br/>
+Line 1:(Name of destination server)<br/>
+Line 2:(AS number of destination server)<br/>
+Line 3:(Location, i.e. COUNTRY - STATE - CITY)<br/>
+Line 4:(IP address of destination server)<br/>
 
-Example:
-Line 1:Google.com
-Line 2:AS15169
-Line 3:USA - California
-Line 4:173.194.46.70
+Example:<br/>
+Line 1:Google.com<br/>
+Line 2:AS15169<br/>
+Line 3:USA - California<br/>
+Line 4:173.194.46.70<br/>
 
 Installation
 =============
