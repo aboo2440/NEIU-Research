@@ -95,7 +95,7 @@ public class DataOrganization {
 				else if (response.equalsIgnoreCase("help")) 
 					// Help
 					{
-						System.out.println("\nOptions:"
+						System.out.println("\nOptions (Not Case-Sensitive):"
 								+ "\n\t\"Load [Filename]\" - Load a file from Collection/Output/ folder."
 								+"\n\t\"Display\" - Display entire database."
 								+"\n\t\"Attempts\" - Display number of attempts. Max limit is 10,000 daily."
@@ -111,15 +111,10 @@ public class DataOrganization {
 					{
 						displayDatabase();
 					} 
-				else if (response.equalsIgnoreCase("load")) 
+				else if (response.substring(0, 4).equalsIgnoreCase("load")) 
 					// Load
 					{
-						System.out.print("File must be located inside Collection/Output/ folder."
-								+ "\nEnter \"exit\" to exit file loading."
-								+ "\nEnter the name of the file to load: ");
-						String file = userIn.nextLine();
-						if (file.equalsIgnoreCase("exit"))
-							break;
+						String file = response.substring(5, response.length());
 						File loadFile = new File("Collection/Output/"+file);
 						loadFile(loadFile);
 					} 
@@ -358,10 +353,11 @@ public class DataOrganization {
 				TransformerFactory transformerFactory = TransformerFactory.newInstance();
 				Transformer transformer = transformerFactory.newTransformer();
 				DOMSource domSource = new DOMSource(doc);
-				String newFilename = filename.toString().substring(6, filename.toString().length());
-				StreamResult result = new StreamResult(new File("Organization/Output/updated_"+newFilename));
+				System.out.println("\n\tLoaded file: " + filename.toString());
+				String newFilename = filename.toString().substring(18, filename.toString().length());
+				StreamResult result = new StreamResult(new File("Collection/Output/updated_"+newFilename));
 				transformer.transform(domSource, result);
-				System.out.println("File successfully loaded.");
+				System.out.println("\tNew file: " + ("Collection\\Output\\updated_"+newFilename) + "\n\nFile successfully modified.");
 			} else {
 				System.out.println("The file was not loaded successfully. Try again."
 						+ "\nFile Path:"+filename);

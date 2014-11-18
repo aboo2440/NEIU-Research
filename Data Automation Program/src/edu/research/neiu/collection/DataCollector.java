@@ -120,7 +120,7 @@ public class DataCollector {
 				this.write("\t\t\t\t<timestamp>"+cal.get(Calendar.HOUR)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND)+" CST (GMT-5)"+"</timestamp>\n");
 				this.write("\t\t\t</time>\n");
 				
-				System.out.println("\nSource Location: " + sourceName + "\nDestination: " + destName);
+				System.out.println("\nSource Location: " + sourceName + "\nDestination: " + destName + "\nGathering information. . . (Ctrl+C to quit)(CMD+C to quit, on MAC)");
 				
 				if (this.sendHttpRequest()) {
 					try {
@@ -164,10 +164,11 @@ public class DataCollector {
 						this.write("\t\t\t<rawdata>" + rawOutput + "\t\t\t</rawdata>\n");
 						
 					} catch (NotFound e) {
-						System.out.println("Node <pre> was not found.");
+						System.out.println("ERROR: there was an error attempting to find tag <pre> in HTTP Request.");
 						continue;
 					}
 				}
+				System.out.println("Information gathered successfully.");
 				this.write("\t\t</traceroute>\n");
 			}
 			this.write("\t</traceroutes>\n");
@@ -494,8 +495,8 @@ public class DataCollector {
 									if (!words[4].equals("") || !words[4].equals(" "))
 										this.write("\t\t\t\t<domain>" + words[4] + "</domain>\n");
 									this.write("\t\t\t\t<ip>" + words[3] + "</ip>\n");
-									System.out.println("Domain: " + words[4]);
-									System.out.println("IP Address: " + words[3]);
+									//System.out.println("Domain: " + words[4]);
+									//System.out.println("IP Address: " + words[3]);
 								}
 								else {
 									if (!words[3].equals("") || !words[3].equals(" "))
@@ -532,8 +533,8 @@ public class DataCollector {
 								if (!words[3].equals("") || !words[3].equals(" "))
 									this.write("\t\t\t\t<domain>" + words[3] + "</domain>\n");
 								this.write("\t\t\t\t<ip>" + words[2] + "</ip>\n");
-								System.out.println("Domain: " + words[3]);
-								System.out.println("IP Address: " + words[2]);
+								//System.out.println("Domain: " + words[3]);
+								//System.out.println("IP Address: " + words[2]);
 							}
 							else {
 								if (!words[2].equals("") || !words[2].equals(" "))
@@ -579,8 +580,8 @@ public class DataCollector {
 								if (!words[4].equals("") || !words[4].equals(" "))
 									this.write("\t\t\t\t<domain>" + words[4] + "</domain>\n");
 								this.write("\t\t\t\t<ip>" + words[3] + "</ip>\n");
-								System.out.println("Domain: " + words[4]);
-								System.out.println("IP Address: " + words[3]);
+								//System.out.println("Domain: " + words[4]);
+								//System.out.println("IP Address: " + words[3]);
 							}
 							else {
 								if (!words[3].equals("") || !words[3].equals(" "))
@@ -618,8 +619,8 @@ public class DataCollector {
 							if (!words[3].equals("") || !words[3].equals(" "))
 								this.write("\t\t\t\t<domain>" + words[3] + "</domain>\n");
 							this.write("\t\t\t\t<ip>" + words[2] + "</ip>\n");
-							System.out.println("Domain: " + words[3]);
-							System.out.println("IP Address: " + words[2]);
+							//System.out.println("Domain: " + words[3]);
+							//System.out.println("IP Address: " + words[2]);
 						}
 						else {
 							if (!words[2].equals("") || !words[2].equals(" "))
