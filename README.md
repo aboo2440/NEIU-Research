@@ -9,6 +9,8 @@ Files
 Summary of files in project:
   - The <b>data</b> folder contains all data files collected during our research. These files are in xml format.
   - The <b>Data Automation Program</b> is the tool we used to collect traceroute data from public traceroute servers. This tool was written in Java. No GUI was made for our tool because we were pressed for time. The tool can be reconfigured easily using the two text files:
+    - <b>Data Automation Program / Collection / config / </b> source.txt
+    - <b>Data Automation Program / Collection / config / </b> destination.txt
 
 Installation
 =============
