@@ -16,7 +16,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import com.jaunt.NodeNotFound;
+import com.jaunt.NotFound;
 import com.jaunt.UserAgent;
 
 @SuppressWarnings("deprecation")
@@ -163,7 +163,7 @@ public class DataCollector {
 						}
 						this.write("\t\t\t<rawdata>" + rawOutput + "\t\t\t</rawdata>\n");
 						
-					} catch (NodeNotFound e) {
+					} catch (NotFound e) {
 						System.out.println("Node <pre> was not found.");
 						continue;
 					}
@@ -652,7 +652,7 @@ public class DataCollector {
 				if (verbose)
 					System.out.println("output["+i+"] " + response[i]);
 			} // end for
-		} catch (NodeNotFound e) {
+		} catch (NotFound e) {
 			System.out.println("An error occured while finding tag \"<pre>\"");
 			return;
 		}
