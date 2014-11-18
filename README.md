@@ -15,7 +15,8 @@ Summary of files in project:
 Installation
 =============
 
-
+Download the files. Open a command prompt that has Java installed to its PATH variable. Navigate into 'Data Automation Program' and run the command: <br/>
+  <b>java -jar "Data Automation Program.jar"</b>
 
 References
 =============
