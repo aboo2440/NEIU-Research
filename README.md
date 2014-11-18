@@ -12,6 +12,47 @@ Summary of files in project:
     - <b>Data Automation Program / Collection / config / </b> source.txt
     - <b>Data Automation Program / Collection / config / </b> destination.txt
 
+Configuration format of source.txt and destination.txt
+
+All lines are required and can't be skipped. A missing line may cause an error in the program.
+
+source.txt
+Line 1:(Name of source server)
+Line 2:(Method of http request, i.e. GET | POST)
+Line 3:(URI of public server)(If using GET, remove the GET query string from this line and add it below)
+Line 4:(GET|POST query string, substitute the location in the string where you input an IP address with #)
+Line 5:(AS number of source server)
+Line 6:(Location, i.e. COUNTRY - STATE - CITY)
+
+Example:
+Method GET
+Line 1:ThunderWorx (PrimeTel NOC)
+Line 2:GET
+Line 3:http://noc.thunderworx.net/cgi-bin/public/traceroute.pl
+Line 4:?target=#
+Line 5:AS12033
+Line 6:Cyprus
+
+Method POST
+Line 1:Colocation American Corporation
+Line 2:POST
+Line 3:http://www.colocationamerica.com/traceroute.php
+Line 4:remoteAddress=#
+Line 5:AS21769
+Line 6:USA - Nevada - Las Vegas
+
+destination.txt
+Line 1:(Name of destination server)
+Line 2:(AS number of destination server)
+Line 3:(Location, i.e. COUNTRY - STATE - CITY)
+Line 4:(IP address of destination server)
+
+Example:
+Line 1:Google.com
+Line 2:AS15169
+Line 3:USA - California
+Line 4:173.194.46.70
+
 Installation
 =============
 
