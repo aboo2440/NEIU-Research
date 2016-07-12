@@ -36,7 +36,7 @@ Line 6:Cyprus<br/>
 Method POST<br/>
 Line 1:Colocation American Corporation<br/>
 Line 2:POST<br/>
-Line 3:http://www.colocationamerica.com/traceroute.php<br/>
+Line 3:http://www.colocationamerica.com/data-center-connectivity/speed-test.htm<br/>
 Line 4:remoteAddress=#<br/>
 Line 5:AS21769<br/>
 Line 6:USA - Nevada - Las Vegas<br/>
