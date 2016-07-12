@@ -162,7 +162,7 @@ AS10259
 USA - New York - Buffalo
 Colocation American Corporation
 POST
-http://www.colocationamerica.com/traceroute.php
+http://www.colocationamerica.com/data-center-connectivity/speed-test.htm
 remoteAddress=#
 AS21769
 USA - Nevada - Las Vegas
